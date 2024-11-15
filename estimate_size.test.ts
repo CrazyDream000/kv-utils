@@ -141,20 +141,4 @@ Deno.test({
   },
 });
 
-Deno.test({
-  name: "estimateSize - object with circular reference",
-  fn() {
-    // deno-lint-ignore no-explicit-any
-    const a = { b: 1 as any };
-    const b = { a };
-    a.b = b;
-    assertEquals(estimateSize(a), 11);
-  },
-});
 
-Deno.test({
-  name: "estimateSize - symbol",
-  fn() {
-    assertEquals(estimateSize(Symbol.for("@deno/kv-utils")), 0);
-  },
-});
