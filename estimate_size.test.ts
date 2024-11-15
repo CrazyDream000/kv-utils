@@ -152,3 +152,9 @@ Deno.test({
   },
 });
 
+Deno.test({
+  name: "estimateSize - symbol",
+  fn() {
+    assertEquals(estimateSize(Symbol.for("@deno/kv-utils")), 0);
+  },
+});
